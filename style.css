@@ -1,0 +1,261 @@
+/* swaync — catppuccin mocha у стилі Waybar/Hyprland (чорний фон, червоний акцент)
+   Завантажується поверх /etc/xdg/swaync/style.css, тож тут лише перевизначення. */
+
+:root {
+  /* палітра (як у ~/.config/waybar/theme.css) */
+  --crust:    #000000;
+  --mantle:   #181825;
+  --base:     #1e1e2e;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --text:     #F4CDCD;
+  --subtext:  #a6adc8;
+  --accent:   #B30000;
+  --red:      #f38ba8;
+  --yellow:   #f9e2af;
+
+  /* змінні теми swaync */
+  --cc-bg: rgba(0, 0, 0, 0.92);
+  --noti-border-color: rgba(166, 173, 200, 0.35);
+  --noti-bg: 24, 24, 37;
+  --noti-bg-alpha: 0.96;
+  --noti-bg-darker: #0b0b12;
+  --noti-bg-hover: #1e1e2e;
+  --noti-bg-focus: rgba(49, 50, 68, 0.6);
+  --noti-close-bg: #313244;
+  --noti-close-bg-hover: #B30000;
+  --text-color: #F4CDCD;
+  --text-color-disabled: #a6adc8;
+  --bg-selected: #B30000;
+
+  --notification-icon-size: 56px;
+  --notification-group-icon-size: 28px;
+  --border: 1px solid var(--noti-border-color);
+  --border-radius: 12px;
+  --notification-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --font-size-body: 14px;
+  --font-size-summary: 15px;
+
+  --mpris-album-art-overlay: rgba(0, 0, 0, 0.6);
+  --mpris-button-hover: rgba(179, 0, 0, 0.6);
+  --mpris-album-art-icon-size: 88px;
+}
+
+* {
+  font-family: "CommitMono Nerd Font", "Symbols Nerd Font", sans-serif;
+}
+
+/*---------------------
+    control center
+---------------------*/
+
+.control-center {
+  background: var(--cc-bg);
+  border: 1px solid var(--subtext);
+  border-radius: 16px;
+  padding: 4px;
+}
+
+.control-center .control-center-list-placeholder {
+  color: var(--subtext);
+  opacity: 0.8;
+  font-size: 15px;
+}
+
+/* заголовок */
+.widget-title {
+  margin: 8px 8px 0 8px;
+  padding: 6px 10px;
+}
+.widget-title > label {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text);
+}
+.widget-title > button {
+  background: var(--surface0);
+  color: var(--text);
+  border: 1px solid transparent;
+  border-radius: 16px;
+  padding: 2px 14px;
+  font-weight: bold;
+}
+.widget-title > button:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* не турбувати */
+.widget-dnd {
+  margin: 4px 8px;
+  padding: 6px 10px;
+  background: rgba(24, 24, 37, 0.8);
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+.widget-dnd > label {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text);
+}
+.widget-dnd > switch {
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  border-radius: 16px;
+  min-height: 22px;
+  min-width: 44px;
+}
+.widget-dnd > switch:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.widget-dnd > switch slider {
+  background: var(--text);
+  border-radius: 16px;
+  min-height: 18px;
+  min-width: 18px;
+  margin: 1px;
+}
+.widget-dnd > switch:checked slider {
+  background: #ffffff;
+}
+
+/* плеєр */
+.widget-mpris {
+  margin: 4px 8px;
+  padding: 0;
+}
+.widget-mpris .widget-mpris-player {
+  margin: 0;
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+.widget-mpris .widget-mpris-player .mpris-overlay {
+  padding: 12px;
+}
+.widget-mpris .widget-mpris-title {
+  color: var(--text);
+  font-weight: bold;
+  font-size: 15px;
+}
+.widget-mpris .widget-mpris-subtitle {
+  color: var(--subtext);
+  font-size: 13px;
+}
+.widget-mpris button {
+  color: var(--text);
+  border-radius: 16px;
+}
+.widget-mpris button:hover {
+  background: var(--mpris-button-hover);
+}
+
+/*---------------------
+    сповіщення
+---------------------*/
+
+.notification-row .notification-background {
+  padding: 4px 8px;
+}
+
+.notification-row .notification-background .notification {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background: rgba(var(--noti-bg), var(--noti-bg-alpha));
+}
+
+.notification-row .notification-background .notification.critical {
+  border: 1px solid var(--red);
+}
+.notification-row .notification-background .notification.low {
+  opacity: 0.85;
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+  padding: 8px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  color: var(--text);
+  font-weight: bold;
+}
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+  color: var(--subtext);
+  font-weight: normal;
+  font-size: 12px;
+  margin-right: 28px;
+}
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+  border-radius: 10px;
+}
+
+/* кнопки дій під сповіщенням */
+.notification-row .notification-background .notification .notification-action > button {
+  background: var(--surface0);
+  color: var(--text);
+  border: none;
+  border-radius: 16px;
+  padding: 2px 12px;
+}
+.notification-row .notification-background .notification .notification-action > button:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* кнопка закриття */
+.close-button {
+  background: var(--noti-close-bg);
+  color: var(--text);
+  min-width: 22px;
+  min-height: 22px;
+  margin-top: 6px;
+  margin-right: 6px;
+}
+.close-button:hover {
+  background: var(--noti-close-bg-hover);
+  color: #ffffff;
+}
+
+/* групи */
+.notification-group .notification-group-headers {
+  color: var(--text);
+  font-weight: bold;
+}
+.notification-group .notification-group-buttons button {
+  background: var(--surface0);
+  color: var(--text);
+  border-radius: 16px;
+}
+.notification-group .notification-group-buttons button:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* inline reply */
+.inline-reply-entry {
+  background: var(--noti-bg-darker);
+  color: var(--text);
+  caret-color: var(--accent);
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+.inline-reply-button {
+  background: var(--surface0);
+  color: var(--text);
+  border: none;
+  border-radius: 16px;
+}
+.inline-reply-button:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* спливаючі сповіщення (поза панеллю) */
+.floating-notifications .notification {
+  box-shadow: var(--notification-shadow);
+}
